@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button id="mode-toggle" class="mode-toggle">Toggle Light/Dark Mode</button>
     <header>
         <img src="images/mango.png" alt="Embedded Image" class="center-image">
         <p> Contact: sweetmango78 on discord | MangyMango@proton.me</p>
@@ -278,7 +279,7 @@
         </tr>
     </table>
 </section>
-<section id="yukari" class="card">
+<section id="Alex" class="card">
     <h2>Yukari</h2>
     <table>
         <tr>
@@ -308,6 +309,36 @@
         </tr>
     </table>
 </section>
+<section id="yukari" class="card">
+    <h2>Yukari</h2>
+    <table>
+        <tr>
+            <td><img src="images/yukari.png" alt="Yukari" width="200"></td>
+            <td>You used to worship her.. the Goddess of lost things.. But soon you left her, and she lost her only follower, causing her to fall from grace. When you visit again, She isn't quite pleased about meeting you...</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="https://files.catbox.moe/t34vt3.png" class="button">catbox</a>
+                <a href="https://chub.ai/characters/MangyMango/yukari-a-fallen-goddess-once-worshipped-here-to-bully-you-as-a-catgirl-bf130c25cd9b" class="button">chub</a>
+            </td>
+        </tr>
+    </table>
+</section>
+<section id="Astrid" class="card">
+    <h2>Alex</h2>
+    <table>
+        <tr>
+            <td><img src="images/Astrid.png" alt="Astrid" width="200"></td>
+            <td>Famous Crime author is… a murderer??? Two greetings, 1. She has just finished hiding a body and she opens the door. . . naked?! 2. She's gone to an ikea, ate some of the meatballs, and being so disgusted by them she's decided to kill the chefs in the kitchen.</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="https://files.catbox.moe/6zu0uc.png" class="button">catbox</a>
+                <a href="https://chub.ai/characters/MangyMango/astrid-9fffa5652a66" class="button">chub</a>
+            </td>
+        </tr>
+    </table>
+</section>
 
         
         <section id="jailbreaks" class="card">
@@ -333,5 +364,20 @@
     <footer>
         <p>&copy; All my bot's are not the top quality but i enjoy making them and i hope you enjoy using them :> </p>
     </footer>
+<script>
+    const modeToggle = document.getElementById('mode-toggle');
+    const body = document.body;
+
+    modeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        localStorage.setItem('mode', body.classList.contains('light-mode') ? 'light' : 'dark');
+    });
+
+    // Check for saved mode preference
+    const savedMode = localStorage.getItem('mode');
+    if (savedMode === 'light') {
+        body.classList.add('light-mode');
+    }
+</script>
 </body>
 </html>
