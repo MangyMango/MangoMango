@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="mode-toggle" class="mode-toggle">Toggle Light/Dark Mode</button>
-    <header>
+    <body>
+        <div id="cards-todo-counter" class="cards-todo-counter">
+            Cards Todo: <span id="cards-todo-count">Loading...</span>
+        </div>
+        <button id="mode-toggle" class="mode-toggle">Toggle Light/Dark Mode</button>
         <img src="images/mango.png" alt="Embedded Image" class="center-image">
         <p> Contact: sweetmango78 on discord | sweetmango78@proton.me</p>
     </header>
     <nav>
-        <ul>
-            <li><a href="#jailbreaks">Jailbreaks</a></li>
-        </ul>
     </nav>
     <main>
         <section id="elina" class="card">
@@ -340,6 +340,21 @@
     </table>
 </section>
 
+<section id="SchizoAdventures" class="card">
+    <h2>Schizo Adventures!</h2>
+    <table>
+        <tr>
+            <td><img src="images/schizo.png" alt="Schizo" width="200"></td>
+            <td> Basically a small card based off this insanity(https://kiwifarms.st/threads/stone-man-warrior-kelly-karl-sleight-america05906759-socioterrific-stonema75807331.69262/), will require a smart model or maybe not, did not test on lower models.</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="https://files.catbox.moe/6c6iyi.png" class="button">catbox</a>
+                <a href="https://chub.ai/characters/MangyMango/schizo-adventures-e265bd338697/main" class="button">chub</a>
+            </td>
+        </tr>
+    </table>
+</section>
         
         <section id="jailbreaks" class="card">
             <h2>Jailbreaks</h2>
@@ -357,27 +372,45 @@
             <h2>Extra Info</h2>
             <p>Future cards include a ton of redone F1 cards, a WataOshi multi-char card that is at the absolute beginning of the anime when Rae wakes up in the new world, Also i plan to replace all the SD1.5 images with decent images aswell as a Jurassic Park Lorebook + Character or OC to go along with it.</p>
         </section>
-    
-
-
-</main>
-    <footer>
-        <p>&copy; All my bot's are not the top quality but i enjoy making them and i hope you enjoy using them :> </p>
-    </footer>
-<script>
-    const modeToggle = document.getElementById('mode-toggle');
-    const body = document.body;
-
-    modeToggle.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        localStorage.setItem('mode', body.classList.contains('light-mode') ? 'light' : 'dark');
-    });
-
-    // Check for saved mode preference
-    const savedMode = localStorage.getItem('mode');
-    if (savedMode === 'light') {
-        body.classList.add('light-mode');
-    }
-</script>
+        <script>
+            // Existing script for mode toggle
+            const modeToggle = document.getElementById('mode-toggle');
+            const body = document.body;
+        
+            modeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                localStorage.setItem('mode', body.classList.contains('light-mode') ? 'light' : 'dark');
+            });
+        
+            // Check for saved mode preference
+            const savedMode = localStorage.getItem('mode');
+            if (savedMode === 'light') {
+                body.classList.add('light-mode');
+            }
+        
+            // Updated script for Cards-todo counter
+            function fetchCardsTodo() {
+                const owner = 'MangyMango';
+                const repo = 'MangoMango';
+                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/issues?state=open`;
+        
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const cardsTodoCount = data.length;
+                        document.getElementById('cards-todo-count').textContent = cardsTodoCount;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching Cards Todo:', error);
+                        document.getElementById('cards-todo-count').textContent = 'Error';
+                    });
+            }
+        
+            // Fetch Cards Todo when the page loads
+            fetchCardsTodo();
+        
+            // Optionally, update the count every 5 minutes
+            setInterval(fetchCardsTodo, 300000);
+        </script>
 </body>
 </html>
