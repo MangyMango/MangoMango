@@ -190,3 +190,15 @@ main table a:hover {
     color: var(--button-hover-text);
     border-color: var(--button-border);
 }
+.cards-todo-counter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-border);
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    z-index: 1000;
+}
